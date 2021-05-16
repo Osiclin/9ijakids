@@ -1,9 +1,10 @@
+import Image from 'next/image'
 import styles from '../styles/Card.module.css'
 
 export default function Card(props) {
     return(
         <div className={styles.card}>
-            <img className={styles.iimg} src={props.src} width="300px" height="300px"/>
+            <Image className={styles.iimg} loading="eager" src={props.src} width={300} height={300} />
             <h3 className={styles.title}>{props.title}</h3>
             <ul>
                 <li>subject: {props.subject}</li>
