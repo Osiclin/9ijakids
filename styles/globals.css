@@ -14,3 +14,17 @@ a {
 * {
   box-sizing: border-box;
 }
+
+ul{
+  list-style: none;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  font-size: .7rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+li{
+  margin-bottom: .4rem;
+}
