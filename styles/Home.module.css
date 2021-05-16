@@ -8,7 +8,6 @@
 
 .main {
   width: 100%;
-  border: 1px solid;
   padding: 3rem 1rem;
   flex: 1;
   display: flex;
@@ -26,6 +25,8 @@
 
 .filtercontainer{
   padding-top: 1rem;
+  display: flex;
+  align-items: center;
 }
 
 .inputwrapper{
@@ -66,5 +67,15 @@
 @media screen and (max-width: 720px) {
   .grid{
     grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 434px) {
+  .filtercontainer{
+    flex-direction: column;
+  }
+
+  .groups{
+    margin: 0.5rem 0;
   }
 }

@@ -7,6 +7,7 @@ import styles from '../styles/Home.module.css'
 export default function Home() {
   const [details, setDetails] = useState([])
   const [groups, setGroups] = useState([])
+  const [levels, setLevels] = useState([])
 
   const Search = async (e) => {
     console.log('hi')
@@ -50,7 +51,16 @@ export default function Home() {
     .then(data => {
       if (mounted) {
         setDetails(data)
-        setGroups(data)
+        let a = []
+        let c = []
+        for (let i = 0; i < data.length; i++) {
+          a.push(data[i].Group)
+          c.push(data[i].Level)
+        }
+        const g = [...new Set(a)]
+        const l = [...new Set(c)]
+        setGroups(g)
+        setLevels(l)
       }
     })
     .catch(err => console.log(err))
@@ -76,19 +86,25 @@ export default function Home() {
             <input className={styles.search} type="search" placeholder="Search for games by topic e.g. social studies" onChange={(e) => Search(e)} />
             
             <div className={styles.filtercontainer}>
+              <div>
               <span className={styles.filterby}>filter by:</span>
+              </div>
+              <div>
               <select className={styles.groups} onChange={(e) => Filter(e)}>
-                <option>All</option>
+                <option>groups</option>
                 {
-                  groups.map((group, index) => <option key={index}>{group.Group}</option>)
+                  groups.map((group, index) => <option key={index}>{group}</option>)
                 }
               </select>
+              </div>
+              <div>
               <select className={styles.levels} onChange={(e) => Filter(e)}>
-                <option>All</option>
+                <option>levels</option>
                 {
-                  groups.map((group, index) => <option key={index}>{group.Level}</option>)
+                  levels.map((level, index) => <option key={index}>{level}</option>)
                 }
               </select>
+              </div>
             </div>
           </div>
         </div>
